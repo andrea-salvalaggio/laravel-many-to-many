@@ -21,7 +21,7 @@
         <label for="exampleFormControlInput1" class="form-label m-0">Tags:</label>
         <div class="mx-4">
             @foreach ($tags as $tag)
-                <input class="form-check-input m-0" type="radio" name="tags[]" id="input-tags" value="{{ $tag->id }}">
+                <input class="form-check-input m-0" type="checkbox" name="tags[]" id="input-tags" value="{{ $tag->id }}">
                 <label class="form-check-label mx-2" for="input-tags">{{ $tag->name }}</label>
             @endforeach
         </div>

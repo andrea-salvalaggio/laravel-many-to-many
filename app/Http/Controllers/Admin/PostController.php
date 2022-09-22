@@ -57,6 +57,11 @@ class PostController extends Controller
         $data['user_id'] = Auth::id();
         $data['post_date'] = new DateTime();
 
+        $newPost = new Post();
+        $newPost->fill($data);
+        $newPost->save();
+        $newPost->tags()->sync($data['tags']);
+
         Post::create($data);
         return redirect()->route('admin.posts.index')->with('success', 'The post ' . '"' . $data['post_title'] . '"' . ' has been created successfully');
     }
