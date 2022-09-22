@@ -1,7 +1,8 @@
 <div>
     <div class="form-group mb-3">
         <label for="exampleFormControlInput1" class="form-label">Title</label>
-        <input type="text" class="form-control" id="input-title" name="post_title" value="{{ old('post_title', $post->post_title) }}" required>
+        <input type="text" class="form-control" id="input-title" name="post_title"
+            value="{{ old('post_title', $post->post_title) }}" required>
     </div>
     @error('post_title')
         <div class="alert alert-danger">{{ $message }}</div>
@@ -9,11 +10,19 @@
 
     <div class="form-group mb-3">
         <label for="exampleFormControlInput1" class="form-label">Image</label>
-        <input type="text" class="form-control" id="input-cover" name="post_image" value="{{ old('post_image', $post->post_image) }}" required>
+        <input type="text" class="form-control" id="input-cover" name="post_image"
+            value="{{ old('post_image', $post->post_image) }}" required>
     </div>
     @error('post_image')
         <div class="alert alert-danger">{{ $message }}</div>
     @enderror
+
+    <div class="form-check-inline mt-4 mb-5">
+        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+        <label class="form-check-label" for="flexRadioDefault1">
+            Default radio
+        </label>
+    </div>
 
     <div class="form-group mb-3">
         <label for="exampleFormControlTextarea1" class="form-label">Content</label>
