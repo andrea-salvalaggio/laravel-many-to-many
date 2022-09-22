@@ -18,10 +18,13 @@
     @enderror
 
     <div class="form-check-inline mt-4 mb-5">
-        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-        <label class="form-check-label" for="flexRadioDefault1">
-            Default radio
-        </label>
+        <label for="exampleFormControlInput1" class="form-label m-0">Tags:</label>
+        <div class="mx-4">
+            @foreach ($tags as $tag)
+                <input class="form-check-input m-0" type="radio" name="tags[]" id="input-tags" value="{{ $tag->id }}">
+                <label class="form-check-label mx-2" for="input-tags">{{ $tag->name }}</label>
+            @endforeach
+        </div>
     </div>
 
     <div class="form-group mb-3">

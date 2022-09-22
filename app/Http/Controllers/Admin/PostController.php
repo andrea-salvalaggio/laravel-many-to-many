@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Auth;
 use App\Models\Post;
 use App\Http\Controllers\Controller;
+use App\Models\Tag;
 use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth as FacadesAuth;
@@ -37,7 +38,8 @@ class PostController extends Controller
     public function create()
     {
         $post = new Post();
-        return view('admin.posts.create', ['post' => $post]);
+        $tags = Tag::all();
+        return view('admin.posts.create', ['post' => $post, 'tags' => $tags]);
     }
 
     /**
@@ -80,7 +82,8 @@ class PostController extends Controller
     public function edit($id)
     {
         $post = Post::findOrFail($id);
-        return view('admin.posts.edit', ['post' => $post]);
+        $tags = Tag::all();
+        return view('admin.posts.edit', ['post' => $post, 'tags' => $tags]);
     }
 
     /**
