@@ -9,15 +9,17 @@
                     <div class="card-body">
                         <h2>{{ $post->post_title }}</h2>
                         <p class="card-text">{{ $post->post_content }}</p>
-                        <span class="badge text-white bg-dark p-2">{{ $post->user->name }}</span>
-                        <span class="badge text-white bg-dark p-2">{{ $post->post_date }}</span>
-                        <span class="badge text-white bg-dark p-2">
-                            @forelse ($post->tags as $tag)
-                                {{ $tag->name . '-' }}
-                            @empty
-                                No tag for this post
-                            @endforelse
-                        </span>
+                        <p>Post written by {{ $post->user->name }} | on {{ $post->post_date }}</p>
+                        <div>
+                            <span>Tags:</span>
+                            <span class="badge text-white bg-success p-2 mx-2">
+                                @forelse ($post->tags as $tag)
+                                    {{ $tag->name }}  &nbsp;
+                                @empty
+                                    No tag for this post
+                                @endforelse
+                            </span>
+                        </div>
                     </div>
                 </div>
             </div>
