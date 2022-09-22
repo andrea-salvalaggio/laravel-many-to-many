@@ -11,6 +11,13 @@
                         <p class="card-text">{{ $post->post_content }}</p>
                         <span class="badge text-white bg-dark p-2">{{ $post->user->name }}</span>
                         <span class="badge text-white bg-dark p-2">{{ $post->post_date }}</span>
+                        <span class="badge text-white bg-dark p-2">
+                            @forelse ($post->tags as $tag)
+                                {{ $tag->name . '-' }}
+                            @empty
+                                No tag for this post
+                            @endforelse
+                        </span>
                     </div>
                 </div>
             </div>
