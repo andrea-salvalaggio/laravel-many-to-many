@@ -1,7 +1,7 @@
 <?php
 
+use App\Models\Tag;
 use Illuminate\Database\Seeder;
-use Faker\Generator as Faker;
 
 class TagsTableSeeder extends Seeder
 {
@@ -10,8 +10,27 @@ class TagsTableSeeder extends Seeder
      *
      * @return void
      */
-    public function run(Faker $faker)
+    public function run()
     {
-        $
+        
+        $tags =
+        [
+            'web',
+            'tech',
+            'coding',
+            'programming',
+            'editor',
+            'develop',
+            'frontend',
+            'backend',
+            'html',
+            'helloworld'
+        ];
+
+        foreach ($tags as $tag) {
+            $newTag = new Tag();
+            $newTag->name = $tag;
+            $newTag->save();
+        }
     }
 }
