@@ -17,11 +17,18 @@
         <div class="alert alert-danger">{{ $message }}</div>
     @enderror
 
+
     <div class="form-check-inline mt-4 mb-5">
         <label for="exampleFormControlInput1" class="form-label m-0">Tags:</label>
-        <div class="mx-4">
+        <div class="m-4">
             @foreach ($tags as $tag)
-                <input class="form-check-input m-0" type="checkbox" name="tags[]" id="input-tags" value="{{ $tag->id }}">
+                @if ($errors->any())
+                    <input class="form-check-input m-0" type="checkbox" name="tags[]" id="input-tags"
+                        value="{{ $tag->id }}" {{ in_array($tag->id, old('tags', [])) ? 'checked' : '' }}>
+                @else
+                    <input class="form-check-input m-0" type="checkbox" name="tags[]" id="input-tags"
+                        value="{{ $tag->id }}" {{ $post->tags->contains($tag) ? 'checked' : '' }}>
+                @endif
                 <label class="form-check-label mx-2" for="input-tags">{{ $tag->name }}</label>
             @endforeach
         </div>
