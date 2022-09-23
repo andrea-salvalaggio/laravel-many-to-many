@@ -26,7 +26,10 @@ class PostController extends Controller
 
     public function index()
     {
-        $posts = Post::where('user_id', Auth::id())->get();
+        // Se voglio mostrare solo i post dell'utente loggato
+        // $posts = Post::where('user_id', Auth::id())->get();
+
+        $posts = Post::all();
         return view('admin.posts.index', compact('posts'));
     }
 
@@ -62,7 +65,7 @@ class PostController extends Controller
         $newPost->save();
         $newPost->tags()->sync($data['tags']);
 
-        Post::create($data);
+        // Post::create($data);
         return redirect()->route('admin.posts.index')->with('success', 'The post ' . '"' . $data['post_title'] . '"' . ' has been created successfully');
     }
 

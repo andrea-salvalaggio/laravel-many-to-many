@@ -29,7 +29,7 @@
                     <tbody>
                         @forelse ($posts as $post)
                             <tr>
-                                <th scope="row" class="align-middle">{{ $post->id }}</th>
+                                <th class="align-middle">{{ $post->id }}</th>
                                 <td class="align-middle">{{ $post->user->name }}</td>
                                 <td class="align-middle">{{ $post->post_title }}</td>
                                 <td class="align-middle">{{ $post->post_date }}</td>
