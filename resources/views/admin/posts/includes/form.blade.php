@@ -22,6 +22,8 @@
         <label for="exampleFormControlInput1" class="form-label m-0">Tags:</label>
         <div class="m-4">
             @foreach ($tags as $tag)
+
+                {{-- Tags are checked on edit page --}}
                 @if ($errors->any())
                     <input class="form-check-input m-0" type="checkbox" name="tags[]" id="input-tags"
                         value="{{ $tag->id }}" {{ in_array($tag->id, old('tags', [])) ? 'checked' : '' }}>

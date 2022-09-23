@@ -26,7 +26,7 @@ class PostController extends Controller
 
     public function index()
     {
-        // Se voglio mostrare solo i post dell'utente loggato
+        // Show only the posts of logged user
         // $posts = Post::where('user_id', Auth::id())->get();
 
         $posts = Post::all();
