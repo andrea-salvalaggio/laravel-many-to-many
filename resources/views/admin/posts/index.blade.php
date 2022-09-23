@@ -22,7 +22,7 @@
                             <th scope="col">ID</th>
                             <th scope="col">Author</th>
                             <th scope="col">Title</th>
-                            <th scope="col">Date</th>
+                            <th scope="col">Tag</th>
                             <th scope="col"></th>
                         </tr>
                     </thead>
@@ -35,8 +35,10 @@
                                 <td class="align-middle">{{ $post->post_date }}</td>
                                 <td>
                                     <a href="{{ route('admin.posts.show', $post->id) }}" class="btn btn-primary">View</a>
-                                    <a href="{{ route('admin.posts.edit', $post->id) }}" class="btn btn-success mx-1">Edit</a>
-                                    <form class="d-inline" action="{{ route('admin.posts.destroy', $post->id) }}" method="POST">
+                                    <a href="{{ route('admin.posts.edit', $post->id) }}"
+                                        class="btn btn-success mx-1">Edit</a>
+                                    <form class="d-inline" action="{{ route('admin.posts.destroy', $post->id) }}"
+                                        method="POST">
                                         @csrf
                                         @method('DELETE')
 
@@ -48,9 +50,13 @@
                             <tr>
                                 <td colspan="10">Posts are not available</td>
                             </tr>
-                        @endforelse      
+                        @endforelse
                     </tbody>
                 </table>
+
+                <div class="d-flex justify-content-center ">
+                    {{ $posts->links() }}
+                </div>
             </div>
         </div>
     </div>

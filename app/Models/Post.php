@@ -11,7 +11,7 @@ class Post extends Model
         'user_id',
         'post_image',
         'post_content',
-        'post_date'
+        'post_date',
     ];
 
     public function user(){

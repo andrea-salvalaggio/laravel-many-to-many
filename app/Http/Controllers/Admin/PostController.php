@@ -30,7 +30,8 @@ class PostController extends Controller
         // Show only the posts of logged user
         // $posts = Post::where('user_id', Auth::id())->get();
 
-        $posts = Post::all();
+        // $posts = Post::all();
+        $posts = Post::paginate(10);
         return view('admin.posts.index', compact('posts'));
     }
 
