@@ -22,6 +22,7 @@ class PostController extends Controller
         'post_title' => 'required|min:3|max:255|unique:posts',
         'post_image' => 'required|active_url',
         'post_content' => 'required|min:10|max:255',
+        'tags' => 'required|exists:tags,id',
     ];
 
     public function index()

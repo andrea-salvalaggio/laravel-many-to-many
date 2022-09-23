@@ -17,8 +17,7 @@
         <div class="alert alert-danger">{{ $message }}</div>
     @enderror
 
-
-    <div class="form-check-inline mt-4 mb-5">
+    <div class="form-check-inline my-3">
         <label for="exampleFormControlInput1" class="form-label m-0">Tags:</label>
         <div class="m-4">
             @foreach ($tags as $tag)
@@ -35,6 +34,9 @@
             @endforeach
         </div>
     </div>
+    @error('tags')
+        <div class="alert alert-danger">{{ $message }}</div>
+    @enderror
 
     <div class="form-group mb-3">
         <label for="exampleFormControlTextarea1" class="form-label">Content</label>
