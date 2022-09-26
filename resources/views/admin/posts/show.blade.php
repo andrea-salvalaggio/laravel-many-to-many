@@ -5,8 +5,13 @@
         <div class="row">
             <div class="col-12 my-5">
                 <div class="card mb-3">
-                    {{-- <img src="{{ $post->post_image }}" class="card-img-top" alt="{{ $post->title }}"> --}}
-                    <img src="{{ asset('storage/' . $post->post_image) }}" alt="{{ $post->title }}">
+
+                    @if (filter_var($post ->post_image, FILTER_VALIDATE_URL))
+                        <img src="{{ $post->post_image }}" class="card-img-top" alt="{{ $post->title }}">
+                    @else
+                        <img src="{{ asset('storage/' . $post->post_image) }}" alt="">                      
+                    @endif
+
                     <div class="card-body">
                         <h2>{{ $post->post_title }}</h2>
                         <p class="card-text">{{ $post->post_content }}</p>

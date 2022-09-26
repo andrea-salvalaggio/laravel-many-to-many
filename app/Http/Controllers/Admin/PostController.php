@@ -7,9 +7,11 @@ use App\Models\Post;
 use App\Http\Controllers\Controller;
 use App\Models\Tag;
 use DateTime;
+use Illuminate\Contracts\Validation\Rule;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth as FacadesAuth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\Rule as ValidationRule;
 
 class PostController extends Controller
 {
@@ -20,8 +22,11 @@ class PostController extends Controller
      */
 
     protected $validateData = [
-        'post_title' => 'required|min:3|max:255|unique:posts',
-        'post_image' => 'required|',
+        'post_title' => [
+            'required|min:3|max:255',
+            // Rule::unique('posts')->ignore($post->title, 'title'),
+        ],
+        'post_image' => 'nullable|max:200',
         'post_content' => 'required|min:10|max:255',
         'tags' => 'required|exists:tags,id',
     ];
@@ -65,6 +70,7 @@ class PostController extends Controller
 
         $newPost = new Post();
         $newPost->fill($data);
+        $data['post_image'] = Storage::put('uploads', $data['post_image']);
         $newPost->save();
         $newPost->tags()->sync($data['tags']);
 
