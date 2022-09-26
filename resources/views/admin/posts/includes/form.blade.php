@@ -10,7 +10,7 @@
 
     <div class="form-group mb-3">
         <label for="exampleFormControlInput1" class="form-label">Image</label>
-        <input type="text" class="form-control" id="input-cover" name="post_image"
+        <input type="file" class="form-control" id="input-cover" name="post_image"
             value="{{ old('post_image', $post->post_image) }}" required>
     </div>
     @error('post_image')

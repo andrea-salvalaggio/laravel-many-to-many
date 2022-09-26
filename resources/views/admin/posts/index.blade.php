@@ -22,7 +22,7 @@
                             <th scope="col">ID</th>
                             <th scope="col">Author</th>
                             <th scope="col">Title</th>
-                            <th scope="col">Tag</th>
+                            <th scope="col">Date</th>
                             <th scope="col"></th>
                         </tr>
                     </thead>

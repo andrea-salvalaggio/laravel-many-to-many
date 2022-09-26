@@ -9,6 +9,7 @@ use App\Models\Tag;
 use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth as FacadesAuth;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -20,7 +21,7 @@ class PostController extends Controller
 
     protected $validateData = [
         'post_title' => 'required|min:3|max:255|unique:posts',
-        'post_image' => 'required|active_url',
+        'post_image' => 'required|',
         'post_content' => 'required|min:10|max:255',
         'tags' => 'required|exists:tags,id',
     ];
@@ -112,6 +113,8 @@ class PostController extends Controller
 
         $data['user_id'] = Auth::id();
         $data['post_date'] = $oldPost->post_date;
+
+        $data['post_image'] = Storage::put('uploads', $data['post_image']);
 
         $oldPost->update($data);
         return redirect()->route('admin.posts.show', ['post' => $oldPost->id])->with('success', 'The post ' . '"' . $data['post_title'] . '"' . ' has been modified successfully');
